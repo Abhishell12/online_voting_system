@@ -4,7 +4,7 @@
 - Cast votes for candidates within each category
 - Real-time vote counting and results display
 - Admin dashboard for managing the voting system
-- 
+  
 # Technologies Used
 
 - HTML, CSS, JavaScript

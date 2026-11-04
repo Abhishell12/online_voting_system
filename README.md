@@ -1,83 +1,70 @@
-# Voting System
-
-![](https://img.shields.io/github/license/Candida18/Online-Voting-System?style=for-the-badge) &emsp; &emsp;
-
-## Description
-
-A voting system is a crucial component of any democratic society. Traditionally, voting has been conducted in person at polling stations, which can be time-consuming and inconvenient for voters. Online voting systems provide a more accessible and convenient alternative.
-
-Online voting systems allow users to cast their votes remotely, eliminating the need for physical presence at a polling station. This opens up voting opportunities for individuals who may have difficulty accessing polling stations due to distance, disability, or other constraints.
-
-Furthermore, online voting systems can enhance the overall efficiency and accuracy of the voting process. They can automate tasks such as voter registration, ballot distribution, and vote counting, reducing the likelihood of errors and ensuring a more transparent and reliable election.
-
-Online voting systems also offer increased security measures to protect the integrity of the voting process. Encryption techniques and authentication mechanisms can be implemented to safeguard against fraud and unauthorized access.
-
-Overall, online voting systems play a vital role in promoting inclusivity, efficiency, and transparency in democratic processes. They empower citizens to exercise their right to vote conveniently and securely, contributing to a more participatory and democratic society.
-
-## Features
-
+# Features
 - User registration and authentication
 - Create and manage voting categories
 - Cast votes for candidates within each category
 - Real-time vote counting and results display
 - Admin dashboard for managing the voting system
-
-💡 For images of the project head to `Screenshot_Images folder 
-
-## Technologies Used
+- 
+# Technologies Used
 
 - HTML, CSS, JavaScript
 - PHP
 - XAMPP
 - MySQL
 
-## Installation
+An online voting application hosted on Microsoft Azure, with secure networking, centralized monitoring and logging, an AI chatbot that answers voter questions, and role-based access control (RBAC).
 
-DOWNLOAD "Online Voting Management System Project"
+# Architecture
 
-1. Install [XAMPP](https://www.youtube.com/watch?v=VCHXCusltqI) and run Apache and MySQL services.
+```mermaid
+flowchart LR
+    U([Voter]) -->|HTTPS| APP
+    U -->|Chat| BOT[AI Bot Service]
 
-2. Download the Project Zip Folder
+    subgraph AZ[Microsoft Azure]
+        subgraph NET[Virtual Network]
+            NSG{{NSG rules}} --> APP[Azure VM<br/>Voting App]
+        end
+        BOT
+        APP --> MON[Azure Monitor<br/>Log Analytics]
+        BOT --> MON
+        RBAC[Azure RBAC<br/>least-privilege roles] -.controls access.-> AZ
+    end
+```
 
-3. Extract the file and copy "online voting system" folder
+# What I Built
 
-4. Paste the folder from previous step inside `xampp/htdocs` directory inside your one of your drive where xampp is installed
+- Azure Virtual Machine: deployed a VM to host the voting application.
+- Virtual Network (VNET): created the network the VM runs in and controlled traffic with Network Security Group rules.
+- Monitoring and logging: set up Azure Monitor to collect logs and metrics for visibility into the system.
+- AI bot service: built and trained a chatbot to answer general voter questions, reducing the need for human interaction.
+- Access control (RBAC): applied role-based access control so each user can access only the resources their role requires.
+- CI/CD: GitHub Actions workflow that builds the app and deploys it to Azure (see .github/workflows/).
 
-5. Open PHPMyAdmin `http://localhost/phpmyadmin`
+# Screenshots
 
-6. Create a database with name votesystem
+# Virtual Network and NSG Rules
+![VNET and NSG rules](docs/images/01-vnet-nsg.png)
 
-7. Import votesystem.sql file (given inside the zip package in db folder)
+# Role Assignments (RBAC)
+![RBAC role assignments](docs/images/02-rbac-roles.png)
 
-8. Run the script 
+# Monitoring Dashboard
+![Azure Monitor dashboard](docs/images/03-monitor-dashboard.png)
 
-9. Use the Following Credential to log into the Admin Session
-   
-   `username:  mohan`
+# AI Bot Conversation
+![Voter bot conversation](docs/images/04-bot-conversation.png)
+
+# Tech Stack
+
+Azure: Virtual Machines, Virtual Network, Network Security Groups, Azure Monitor, Log Analytics, AI Bot Service, Azure RBAC
+
+Tools: GitHub Actions, Git
+
+Application: PHP, MySQL, HTML/CSS/JavaScript (from the original project)
+
+# License
+
+The original application is licensed under Apache 2.0. See the LICENSE file.
    
    `password:  mohan.sjbit`
-
-## Usage
-
-- Visit `http://localhost/online-vote/admin/` in your browser to access the admin login.
-- Login to admin dashboard using credentials 'mohan' and 'mohan.sjbit'.
-- Add, Delete or Update existing voters and candidates.
-- Once admin things are done sign-out and goto `http://localhost/online-vote/` to access the voting system.
-- Cast the vote and submit.
-
-## Screenshot
-Voting Interface![Voting Interface](https://github.com/mohangowdatdev/online-voting-system-DBMS-Project/blob/main/Screenshot_Images/Opera%20Snapshot_2024-03-03_200245_localhost.png?raw=true)
-Admin Dashboard![Admin Dashboard](https://github.com/mohangowdatdev/online-voting-system-DBMS-Project/blob/main/Screenshot_Images/Screenshot%202024-03-03%20173257.png?raw=true)
-Database Snapshot![Database Snapshot](https://github.com/mohangowdatdev/online-voting-system-DBMS-Project/blob/main/Screenshot_Images/Screenshot%202024-03-03%20201439.png)
-
-## License
-
-This project is licensed under the [APACHE 2.0 License](https://github.com/mohangowdatdev/online-voting-system-DBMS-Project?tab=Apache-2.0-1-ov-file).
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request. Also to keep my work supported I'm even open for sponsoring :D
-
-## Contact
-
-For any questions or suggestions, please contact via [MAIL](mailto:mohangowda.mgt@gmail.com) or catchup with me anywhere on [BIO LINK](https://mohangowdat.bio.link/).
